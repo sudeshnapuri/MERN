@@ -1,0 +1,27 @@
+Collections - geerally are stores of similar (follows a schema) data THEY DONT NEED TO
+Databases can contain multiple collections at the same time
+
+Collections =(ish) Tables
+
+Commands:
+
+CREATE:
+db.createCollection('name_of_collection');
+
+READ:
+show collections;
+
+-Shows all collections within a database
+
+DELETE:
+db.collection_name.drop();
+
+UPDATE:
+db.collection_name.renameCollection('new_name');
+
+Exercise:
+make a databse to store relevent data (for something)
+create 2 new collections (in new database)
+update name of one of the cllections
+delete one collection
+show all collections

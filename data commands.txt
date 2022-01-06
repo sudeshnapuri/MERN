@@ -1,0 +1,115 @@
+Databases - contain our collections
+Collections - contain our documents
+Documents - Key Value Pairs (BSON) for our data
+
+How to manipulate and query our documents
+Documents are objects of data stored using BSON (less readable version of JSON)
+Documents do not HAVE to follow  strict schema
+
+CREATE:
+INSERT command
+InsertOne - adding one object
+InsertMany - adding many objects
+
+good practice to write commands in a notepad/vscode/sticky note first
+- easier to debug
+- easier to copy and past
+- easier to write (with syntax highlighting)
+
+eg. to create a lizard object and add him to a new collection in my already existing database
+
+db.lizard_pen.insertOne(
+	{
+	JSON OBJECT
+	}
+);
+
+db.lizard_pen.insertOne(
+	{
+		"name": "Monty",
+		"species": "Python",
+		"length": 23
+	}
+);
+
+
+Exercise:
+
+Insert a new document into your collection
+Your document MUST have atleast 4 key value pairs, atleast 1 String and 1 number
+Access the new document through the GUI
+Stretch goal
+- Adding a boolean value pair
+- Adding an array value pair
+
+db.low_light_demand.insertOne(
+	{
+		"name": "Snakey",
+		"type": "Snake Plant",
+		"water demand": "Low",
+		"length(cm)": 30
+	}
+);
+
+(with boolean)db.low_light_demand.insertOne(
+	{
+		"name": "Snakey",
+		"type": "Snake Plant",
+		"low light demand": true,
+		"length(cm)": 30
+	}
+);
+
+(with array)db.low_light_demand.insertOne(
+	{
+		"name": "Viney",
+		"type": "Pothos",
+		"low light demand": true,
+		"length(cm)": 30,
+		"sunlight demand": [
+			"Low demand",
+			"Medium demand"
+			]
+	}
+);
+
+Creating multiple documents
+insertMany([{data}, {data2}, {data3}]);
+
+
+db.high_light_demand.insertMany([
+	{
+		"name": "Jade",
+		"type": "Jade Plant",
+		"high light demand": true,
+		"length(cm)": 10,
+		"properties": [
+			"Sturdy",
+			"Fleshy"
+			]
+	},
+	{
+		"name": "Palm",
+		"type": "Sago Palm",
+		"high light demand": true,
+		"length(cm)": 23,
+		"properties": [
+			"Decorative",
+			"Doesn't shed leaves"
+			]
+	},
+	{
+		"name": "Dwarf",
+		"type": "Dwarf Umbrella",
+		"high light demand": true,
+		"length(cm)": 34,
+		"properties": [
+			"Tree-look",
+			"Broad leaves"
+			]
+	}
+]);
+
+READ:
+db.collection_name.find();
+

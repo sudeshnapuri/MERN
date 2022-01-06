@@ -1,0 +1,111 @@
+Embedded documents are useful for one to many, such as habitats and animals
+
+db.habitat.insertOne(
+{
+	"name": "Musty Swamp",
+	"capacity": 5,
+	"lizards":
+	   {
+		"name": "Yusk",
+		"colour": "Green"
+	   }
+);
+
+db.habitat.insertOne(
+{
+	"name": "Musty Swamp",
+	"capacity": 5,
+	"lizards": [
+	   {
+		"name": "Yusk",
+		"colour": "Green"
+	   },
+ 	   {
+		"name": "Elon",
+		"colour": "Purple"
+	   },
+]);
+
+db.habitat.updateOne(
+{
+	"name": "Mustier Swamp"
+},
+{
+	"$set": {
+	"lizards": [
+	{
+	  "name": "Yusk",
+	   "colour": "Red"
+	},
+	{
+	   "name": "Elon",
+	   "colour": "Red"
+	}
+	]
+}
+}
+);
+
+Exercise:
+Exercises - Using your current data
+Create a new document that can embed existing data
+Insert a document with an array of embedded documents into a new collection
+
+===(created a new collection called room first and insterted document)
+db.createCollection('room');
+db.room.insertOne(
+	{
+		"name": "Living Room",
+		"capacity": 5,
+		"conditions": "Low/Medium Light",
+	}
+);
+
+===(created an embedded document and added room document and low light plant document)
+db.room.insertOne(
+{
+	"name": "Living Room",
+	"capacity": 5,
+	"conditions": "Low/Medium Light",
+	"plants":
+	   {
+		"name": "Snakey",
+		"type": "Snake Plant"
+	   }
+});
+
+db.room.insertOne(
+{
+	"name": "Living Room",
+	"capacity": 5,
+	"conditions": "Low/Medium Light",
+	"plants": [
+	   {
+		"name": "Snakey",
+		"type": "Snake Plant"
+	   },
+ 	   {
+		"name": "Fern",
+		"type": "Bird’s Nest Fern"
+	   }
+]});
+
+db.room.updateOne(
+{
+	"name": "Living Room"
+},
+{
+	"$set": {
+	"plants": [
+	{
+	  "name": "Snakey",
+	  "type": "Snake Plant Plant"
+	},
+	{
+	   "name": "Fern",
+	   "type": "Bird’s Nest Fern Fern"
+	}
+	]
+}
+}
+);

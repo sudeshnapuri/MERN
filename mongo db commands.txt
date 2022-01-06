@@ -1,0 +1,36 @@
+Local - Database
+startup-log - Collection
+The data inside are our documents
+
+Creating databases (and editing them) through the command line
+
+CREATE:
+use db_name eg. use new_database
+
+-this creates a new database and starts using it
+-Databases (custom databases) are not visible until they contain a collection (which has to contain documents)
+
+READ:
+show dbs
+
+-to see all existing databases
+
+DELETE:
+db.dropDatabase();
+
+-delete an existing database
+-when using a databse (with use db_name) you can pass in db instead of the name when doing commands
+
+(copyDatabase is deprecated, use MongoDB docs to see the equivalent)UPDATE:
+old_db.copyDatabase('old_db', 'new_db');
+use old_db
+db-dropDatabase();
+
+-copy an existing database
+-use the new database (you just copied)
+-delete the old database
+
+Exercise-
+create 2 databases
+show all databases
+delete one of the databases

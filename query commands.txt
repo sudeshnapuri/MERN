@@ -1,0 +1,115 @@
+Porjection - telling MOngoDB what fields you want to see
+
+db.lizard_pen.find(
+	{},
+	{
+		"name": true
+		"_id": false
+	}
+);
+
+saying we only want to see the name
+_id is shown by default so have to set it to be false
+
+db.low_light_demand.find(
+	{},
+	{
+		"name": true,
+		"_id": false,
+		"length(cm)": true
+	}
+);
+
+When projecting a value that isn't in a document, the document is still shown but ignores the necessary projection
+- if a plant doens't have height in above example, only its name will show up
+
+Simple queries to filter out data
+Pass partial object, if any document matches that object it returns the whole document
+
+db.lizard_pen.find(
+{
+	"species": "Gecko"
+}
+);
+
+find() - searches through entire collection and finds all matching
+findOne(); - same thing but finds and returns first instance only
+
+db.lizard_pen.findOne(
+{
+	"species": "Gecko"
+}
+);
+
+Find you can pass in any value 
+
+check MORE than x = y
+
+return IF length is GreaterThan 15
+db.lizard_pen.find(
+{
+"length": {"$gt" : 12}
+}
+);
+return IF length is not 12
+db.lizard_pen.find(
+{
+"length": {"$ne" : 12}
+}
+);
+
+$gt = GreaterThan
+$lt = LessThan
+$gte = GreaterThanorEqual
+$ne = NotEqual
+
+Queries for Arrays
+$in = in
+$nin = notIn
+
+db.lizard_pen.find(
+{
+"favFood2 : {"$in" :  ["Pizza"]}
+}
+);
+
+exercises solutions:
+find all documents in collection low light demand
+db.low_light_demand.find();
+
+find all documents with type equals Snake Plant
+db.low_light_demand.find(
+{
+  "type" : "Snake Plant"
+}
+);
+
+find all documents with name not equals Snakey
+db.low_light_demand.find(
+{
+"name": {"$ne" : "Snakey"}
+}
+);
+
+find all documents with length less than 30
+db.low_light_demand.find(
+{
+"length(cm)": {"$lt" : 30}
+}
+);
+
+find all documents with length greater than or equals to 50
+db.low_light_demand.find(
+{
+"length(cm)": {"$gte" : 50}
+}
+);
+
+find all documents with Low Demand in array sunlight demand
+db.low_light_demand.find(
+{
+  "sunlight demand" : {"$in" : [ "Low Demand" ] }
+}
+);
+
+
